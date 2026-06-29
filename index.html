@@ -82,6 +82,13 @@
       margin: 0 auto;
     }
 
+    .brand-col {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     /* ── Logo / icon ── */
     .logo-wrap {
       position: relative;
@@ -353,6 +360,42 @@
       line-height: 2.4;
     }
     footer .hl { color: var(--cyan); }
+
+    /* ── Desktop: spread into two columns, fit viewport, no scroll ── */
+    @media (min-width: 900px) {
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        max-width: 1080px;
+        width: 100%;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        column-gap: 56px;
+        padding: 28px 40px 12px;
+      }
+      .brand-col { width: auto; }
+
+      /* tighten vertical rhythm so it fits shorter laptop screens */
+      .logo-wrap   { margin-bottom: 16px; }
+      .biz-name    { font-size: 15px; }
+      .status-bar  { margin-bottom: 22px; }
+      .hp-bar-wrap { margin-bottom: 20px; }
+      .blurb       { margin-bottom: 0; }
+      .divider     { display: none; }
+
+      .links { margin-top: 0; align-self: center; }
+      footer { padding: 4px 16px 14px; }
+    }
+
+    /* ── Wide desktop: a little more breathing room ── */
+    @media (min-width: 1400px) {
+      main { max-width: 1180px; column-gap: 80px; }
+    }
   </style>
 </head>
 <body>
@@ -360,6 +403,8 @@
 <canvas id="bg"></canvas>
 
 <main>
+
+  <div class="brand-col">
 
   <!-- Logo: pixel wrench + controller -->
   <div class="logo-wrap">
@@ -434,6 +479,8 @@
   </div>
 
   <div class="divider"></div>
+
+  </div><!-- /brand-col -->
 
   <div class="links">
 
